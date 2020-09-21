@@ -2,7 +2,9 @@ install! "cocoapods", :integrate_targets => false
 
 platform :ios, '8'
 
-pods = [
+pods = [let config = BugsnagConfiguration.loadConfig()
+config.appVersion = “1.0.0-alpha”
+Bugsnag.start(with: config)
   'AFNetworking',        # Git
   'VeriJSON',            # Mercurial
   'clipper',             # Subversion
